@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -256,8 +257,8 @@
 
         // QUIRKY PRODUCTION ELEMENTS
         const quirkySounds = [
-            'record scratch', 'phone ringing', 'cowbell accent', 'vinyl crackle', 
-            'crowd cheer', 'glass shatter sound effect', 'thunder rumble', 
+            'record scratch', 'phone ringing', 'cowbell accent', 'vinyl crackle',
+            'crowd cheer', 'glass shatter sound effect', 'thunder rumble',
             'heartbeat pulse', 'clock ticking', 'door slam', 'car engine rev',
             'bird chirping', 'rain sounds', 'wind chimes', 'whistle melody'
         ];
@@ -377,7 +378,7 @@
                     "No more schedules, no more nine to five\nI'm alive\nIn ways I never was when I was trapped\n{title}, unwrapped"
                 ]
             },
-            
+
             prechoruses: {
                 heartbreak: [
                     "And I know I should let go\nBut my heart won't let me though\nI'm stuck here in between\n{title}, what's it mean",
@@ -551,14 +552,14 @@
             const adjs = getWords('adj');
             const nouns = getWords('nouns');
             const vrbs = getWords('verbs');
-            
+
             const actionVerbs = ['Take', 'Hold', 'Let', 'Break', 'Set', 'Feel', 'Chase', 'Find', 'Lose', 'Keep', 'Give', 'Show', 'Tell', 'Bring', 'Leave', 'Make', 'Save', 'Heal', 'Call', 'Come', 'Stay', 'Go', 'Wait', 'Run', 'Walk', 'Stand', 'Fly'];
             const objects = ['Me', 'You', 'Us', 'Home', 'Tonight', 'Forever', 'Again'];
             const prepositions = ['In', 'On', 'Through', 'Without', 'With', 'Under', 'Over', 'Beyond', 'Into', 'Across', 'After', 'Before', 'Beneath', 'Above', 'Around'];
 
             const pattern = Math.floor(Math.random() * 6);
             let title;
-            
+
             if (pattern === 0) {
                 // "Verb Me Adverb" - Hold Me Close, Take Me Home
                 const adverbs = ['Close', 'Home', 'Tonight', 'Away', 'Higher', 'Now', 'Forever'];
@@ -579,11 +580,11 @@
                 // "Noun And Noun" - Fire And Ice, Love And War
                 title = r(nouns) + ' And ' + r(nouns);
             }
-            
+
             if (banned.some(b => title.toLowerCase().includes(b.toLowerCase()))) {
                 return makeTitle(banned);
             }
-            
+
             return title;
         }
 
@@ -629,9 +630,9 @@
             }
 
             const bk = backup && backupDesc[backup] ? ', ' + r(backupDesc[backup]) : '';
-            
+
             let s = '';
-            
+
             // QUIRKY INTRO (10% chance)
             if (Math.random() < 0.1) {
                 s += '[Intro - ' + r(quirkySounds) + ', then ' + r(intros[genre] || intros.pop).replace('[Intro - ', '').replace(']', '') + ']\n\n';
@@ -710,7 +711,7 @@
                 s += verse3 + '\n';
                 if (Math.random() < 0.4) s += r(adlibs) + ', ' + r(questionAdlibs) + '\n';
                 s += '\n';
-                
+
                 // Additional pre-chorus
                 const prechorus3 = r(templates.prechoruses[theme]).replace(/{title}/g, title);
                 s += '(Pre-Chorus) [Final build' + bk + ']\n';
@@ -720,7 +721,7 @@
             // For 6+ minute songs
             if (length >= 6) {
                 s += '[Instrumental Break - ' + genre + ' showcase]\n\n';
-                
+
                 // Extra chorus
                 s += '(Chorus)' + (isDuet?' ['+duet.c+']':'') + ' [' + (chorusDescriptions[genre] || chorusDescriptions.pop) + bk + ']\n';
                 s += chorus + '\n\n';
@@ -733,7 +734,7 @@
                 s += verse4 + '\n';
                 if (Math.random() < 0.5) s += r(adlibs) + '\n';
                 s += '\n';
-                
+
                 const prechorus4 = r(templates.prechoruses[theme]).replace(/{title}/g, title);
                 s += '(Pre-Chorus) [Epic build' + bk + ']\n';
                 s += prechorus4 + '\n\n';
@@ -744,7 +745,7 @@
                 s += '[Extended Instrumental - ' + genre + ' solo section';
                 if (Math.random() < 0.2) s += ' with ' + r(quirkySounds);
                 s += ']\n\n';
-                
+
                 s += '(Chorus)' + (isDuet?' ['+duet.c+']':'') + ' [' + (chorusDescriptions[genre] || chorusDescriptions.pop) + ' - massive' + bk + ']\n';
                 s += chorus + '\n\n';
             }
@@ -800,15 +801,15 @@
         function showModal(title) {
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalLyrics').textContent = allLyrics[title];
-            document.getElementById('modal').classList.add('show');
+document.getElementById('modal').classList.add('show');
         }
 
         function closeModal() {
-            document.getElementById('modal').classList.remove('show');
+document.getElementById('modal').classList.remove('show');
         }
 
         function copyLyrics() {
-            navigator.clipboard.writeText(document.getElementById('modalLyrics').textContent);
+navigator.clipboard.writeText(document.getElementById('modalLyrics').textContent);
             alert('Copied!');
         }
 
